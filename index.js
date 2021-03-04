@@ -6,27 +6,20 @@ const Vision = require("@hapi/vision");
 const Handlebars = require("handlebars");
 const Cookie = require("@hapi/cookie");
 const Joi = require("@hapi/joi");
-
+require('./app/models/db');
 const env = require('dotenv');
-env.config();
 
-/*const result = dotenv.config();
+const dotenv = require("dotenv");
+
+const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
   process.exit(1);
-}*/
-
-require('./app/models/db');
+}
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
 });
-
-/*server.bind({
-  users: {},
-  currentUser: {},
-  donations: [],
-});*/
 
 async function init() {
   await server.register(Inert);
@@ -52,7 +45,6 @@ async function init() {
     },
     redirectTo: "/",
   });
-
   server.auth.default("session");
   server.route(require("./routes"));
   await server.start();
