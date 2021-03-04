@@ -6,8 +6,8 @@ const Vision = require("@hapi/vision");
 const Handlebars = require("handlebars");
 const Cookie = require("@hapi/cookie");
 const Joi = require("@hapi/joi");
-require('./app/models/db');
-const env = require('dotenv');
+require("./app/models/db");
+const env = require("dotenv");
 
 const dotenv = require("dotenv");
 
