@@ -1,5 +1,4 @@
 "use strict";
-
 const User = require("../models/user");
 const Boom = require("@hapi/boom");
 const Joi = require('@hapi/joi');
@@ -11,14 +10,12 @@ const Accounts = {
       return h.view("main", { title: "Welcome to Donations" });
     },
   },
-
   showSignup: {
     auth: false,
     handler: function (request, h) {
       return h.view("signup", { title: "Sign up for Donations" });
     },
   },
-
   signup: {
     auth: false,
     validate: {
@@ -63,14 +60,12 @@ const Accounts = {
       }
     },
   },
-
   showLogin: {
     auth: false,
     handler: function (request, h) {
       return h.view("login", { title: "Login to Donations" });
     },
   },
-
   login: {
     auth: false,
     validate: {
@@ -107,7 +102,12 @@ const Accounts = {
       }
     }
   },
-
+  logout: {
+    handler: function (request, h) {
+      request.cookieAuth.clear();
+      return h.redirect("/");
+    },
+  },
   showSettings: {
     handler: async function(request, h) {
       try {
@@ -119,7 +119,6 @@ const Accounts = {
       }
     }
   },
-
   updateSettings: {
     validate: {
       payload: {
@@ -157,16 +156,6 @@ const Accounts = {
       }
     },
   },
-
-  logout: {
-    handler: function (request, h) {
-      request.cookieAuth.clear();
-      return h.redirect("/");
-    },
-  },
-
 };
-
-const User = require('../models/user');
 
 module.exports = Accounts;
