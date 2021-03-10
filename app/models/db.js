@@ -22,3 +22,18 @@ db.on("disconnected", function() {
 db.once("open", function() {
   console.log(`database connected to ${this.name} on ${this.host}`);
 });
+
+async function seed() {
+  var seeder = require('mais-mongoose-seeder')(Mongoose);
+  const data = require('./seed-data.json');
+  const Donation = require('./donation');
+  const Candidate = require('./candidate.js');
+  const User = require('./user');
+  const dbData = await seeder.seed(data, { dropDatabase: false, dropCollections: true });
+  console.log(dbData);
+}
+
+db.once('open', function () {
+  console.log(`database connected to ${this.name} on ${this.host}`);
+  seed();
+});
