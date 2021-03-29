@@ -19,6 +19,7 @@ module.exports = [
   { method: "POST", path: "/donate", config: Donations.donate },
   { method: "GET", path: "/report", config: Donations.report },
 
+
   {
     method: "GET",
     path: "/{param*}",
