@@ -56,17 +56,6 @@ class DonationService {
     const response = await axios.post(this.baseUrl + "/api/users", newUser);
     return response.data;
   }
-
-  async deleteAllCandidates() {
-    const response = await axios.delete(this.baseUrl + "/api/candidates");
-    return response.data;
-  }
-
-  async deleteOneCandidate(id) {
-    const response = await axios.delete(this.baseUrl + "/api/candidates/" + id);
-    return response.data;
-  }
 }
-
 
 module.exports = DonationService;

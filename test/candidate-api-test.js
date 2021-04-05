@@ -10,6 +10,7 @@ suite("Candidate API tests", function () {
   let newCandidate = fixtures.newCandidate;
 
   const donationService = new DonationService("http://localhost:3000");
+  //const donationService = new DonationService("https://frozen-journey-20672.herokuapp.com/");
 
   setup(async function () {
     await donationService.deleteAllCandidates();
@@ -64,7 +65,7 @@ suite("Candidate API tests", function () {
     for (var i = 0; i < candidates.length; i++) {
       assert(_.some([allCandidates[i]], candidates[i]), "returnedCandidate must be a superset of newCandidate");
     }
-  });gi
+  });
 
   test("get all candidates empty", async function () {
     const allCandidates = await donationService.getCandidates();
